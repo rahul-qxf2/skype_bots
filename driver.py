@@ -20,7 +20,7 @@ class Login():
             options.add_argument("start-maximized")
             options.add_argument("disable-infobars")
             options.add_argument("--disable-extensions")
-            self.driver = webdriver.Chrome(chrome_options=options)
+            self.driver = webdriver.Chrome(options=options)
             self.driver.get('https://www.skype.com/en/')
             print("Page Title is : %s" % self.driver.title)
             linkelement= self.driver.find_element_by_xpath(
