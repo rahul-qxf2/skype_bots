@@ -40,6 +40,7 @@ class Login():
             waiting = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@class='btn btn-block btn-primary' and @type='submit']")))
             signinelement=self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']")
             signinelement.click()
+            print("Page Title is : %s" % self.driver.title)
            
             
             
