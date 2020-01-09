@@ -29,7 +29,7 @@ class TestPages(unittest.TestCase):
         self.browser.get('http://www.google.com')
         self.assertIn('Google', self.browser.title)
     
-    def LoginSkype(self):
+    def testLoginSkype(self):
         try:
             email = credentials.USERNAME
             password = credentials.PASSWORD
