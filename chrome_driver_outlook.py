@@ -6,6 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
+import requests
 import re
 import time
 import skype_credentials as credentials
@@ -65,6 +66,9 @@ class Login():
             self.driver.get("https://www.skype.com/en/")
             self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
+            res = requests.get('https://www.skype.com/en/')
+            res.raise_for_status()
+            print(res.text)
             self.driver.implicitly_wait(10)
             wait = WebDriverWait(self.driver, 60)
             waiting = wait.until(EC.element_to_be_clickable(
