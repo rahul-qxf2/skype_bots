@@ -33,7 +33,7 @@ class Login():
             # or the login a href is not found and throws error
             '''options.add_argument(
                 'window-size=' + str(my_window['width']) + 'x' + str(my_window['height']))'''
-            self.driver = webdriver.Chrome(chrome_options=options)
+            self.driver = webdriver.Chrome(options=options)
             self.driver.get('https://login.live.com/login.srf')
             print("Page Title is : %s" % self.driver.title)
             element =self.driver.find_element_by_xpath(
@@ -63,6 +63,9 @@ class Login():
             print("Page Title is : %s" % self.driver.title)
             
             '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']").click()'''
+            print("Page Title is : %s" % self.driver.title)
+            self.driver.get("https://www.skype.com/en/")
+            self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
         except Exception as e:
 
