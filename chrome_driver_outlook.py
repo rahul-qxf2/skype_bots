@@ -35,6 +35,7 @@ class Login():
                 'window-size=' + str(my_window['width']) + 'x' + str(my_window['height']))'''
             self.driver = webdriver.Chrome(options=options)
             self.driver.get('https://login.live.com/login.srf')
+            print("Headless Chrome Initialized")
             print("Page Title is : %s" % self.driver.title)
             element =self.driver.find_element_by_xpath(
                 "//input[@class='form-control ltr_override' and @name='loginfmt']")
