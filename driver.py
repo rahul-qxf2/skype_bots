@@ -41,8 +41,9 @@ class Login():
             print("Page Title is : %s" % self.driver.title)
 
             wait = WebDriverWait(self.driver, 10)
-            linkelement = self.driver.find_element_by_xpath(
-                "//a[@class='btn secondaryCta small usernameBtn notAuthenticated']")
+            '''linkelement = self.driver.find_element_by_xpath(
+                "//a[@class='btn secondaryCta small usernameBtn notAuthenticated']")'''
+            linkelement= self.driver.find_element_by_xpath("//a[contains(@class ,'usernameBtn notAuthenticated')]")
             ''''self.driver.execute_script("arguments[0].scrollIntoView();", linkelement)'''
             waiting = wait.until(EC.element_located_to_be_selected(
                 (By.XPATH, "//a[@class='btn secondaryCta small usernameBtn notAuthenticated']")))
