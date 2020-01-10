@@ -68,6 +68,10 @@ class Login():
             self.driver.get("https://www.skype.com/en/")
             self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
+
+            wait = WebDriverWait(self.driver, 60)
+            waiting = wait.until(EC.element_to_be_clickable(
+                (By.XPATH, "//p[contains(@class, 'user-badge-email')]")))
             userlogin = self.driver.find_element_by_xpath(
                 "//p[contains(@class, 'user-badge-email')]")
             time.sleep(1)
