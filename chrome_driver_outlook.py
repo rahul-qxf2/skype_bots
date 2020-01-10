@@ -66,9 +66,9 @@ class Login():
             self.driver.get("https://www.skype.com/en/")
             self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
-            res = requests.get('https://www.skype.com/en/')
-            res.raise_for_status()
-            print(res.text)
+            '''res = requests.get('https://www.skype.com/en/')'''
+            '''res.raise_for_status()'''
+            '''print(res.text)'''
             self.driver.implicitly_wait(10)
             wait = WebDriverWait(self.driver, 60)
             waiting = wait.until(EC.element_to_be_clickable(
@@ -77,6 +77,8 @@ class Login():
                 "//p[contains(@class, 'user-badge-email')]")
             time.sleep(1)
             print("User name is : %s" % userlogin.get_attribute('innerHTML'))
+            source_code=userlogin.get_attribute('outerHTML')
+            print("source code is: %s" %source_code)
 
         except Exception as e:
 
