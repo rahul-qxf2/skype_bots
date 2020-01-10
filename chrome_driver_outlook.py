@@ -18,21 +18,18 @@ class Login():
         try:
             email = credentials.USERNAME
             password = credentials.PASSWORD
-            my_window = {
-                'width': 1920,
-                'height': 1024
-            }
             options = Options()
             options.headless = True
-            options.add_argument("--headless")
-            options.add_argument('--no-sandbox')
-            options.add_argument("start-maximized")
-            options.add_argument("disable-infobars")
+            options.add_argument("--window-size=1920,1080")
             options.add_argument("--disable-extensions")
+            options.add_argument("--proxy-server='direct://'")
+            options.add_argument("--proxy-bypass-list=*")
+            options.add_argument("--start-maximized")
+            options.add_argument('--headless')
+            options.add_argument('--disable-gpu')
+            options.add_argument('--disable-dev-shm-usage')
+            options.add_argument('--no-sandbox')
             options.add_argument('--ignore-certificate-errors')
-            # or the login a href is not found and throws error
-            '''options.add_argument(
-                'window-size=' + str(my_window['width']) + 'x' + str(my_window['height']))'''
             self.driver = webdriver.Chrome(options=options)
             self.driver.get('https://login.live.com/login.srf')
             print("Headless Chrome Initialized")
@@ -68,7 +65,7 @@ class Login():
             self.driver.get("https://www.skype.com/en/")
             self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
-
+            self.driver.implicitly_wait(10)
             wait = WebDriverWait(self.driver, 60)
             waiting = wait.until(EC.element_to_be_clickable(
                 (By.XPATH, "//p[contains(@class, 'user-badge-email')]")))
