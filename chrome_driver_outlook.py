@@ -31,8 +31,8 @@ class Login():
             options.add_argument("--disable-extensions")
             options.add_argument('--ignore-certificate-errors')
             # or the login a href is not found and throws error
-            options.add_argument(
-                'window-size=' + str(my_window['width']) + 'x' + str(my_window['height']))
+            '''options.add_argument(
+                'window-size=' + str(my_window['width']) + 'x' + str(my_window['height']))'''
             self.driver = webdriver.Chrome(chrome_options=options)
             self.driver.get('https://login.live.com/login.srf')
             print("Page Title is : %s" % self.driver.title)
@@ -50,9 +50,19 @@ class Login():
             signinelement.click()
             print("Page Title is : %s" % self.driver.title)
             '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @id='idSIButton9']").click()'''
-
+            
+            
             self.driver.find_element_by_xpath("//input[@name='passwd' and @type='password']").send_keys(password)
-            self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']").click()
+
+            wait = WebDriverWait(self.driver, 60)
+            waiting = wait.until(EC.element_to_be_clickable(
+                (By.XPATH, "//input[@class='btn btn-block btn-primary' and @type='submit']")))
+            submitelement = self.driver.find_element_by_xpath(
+                "//input[@class='btn btn-block btn-primary' and @type='submit']")
+            submitelement.click()
+            print("Page Title is : %s" % self.driver.title)
+            
+            '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']").click()'''
             print("Page Title is : %s" % self.driver.title)
         except Exception as e:
 
