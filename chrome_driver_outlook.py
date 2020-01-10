@@ -37,7 +37,7 @@ class Login():
             self.driver.get('https://login.live.com/login.srf')
             print("Headless Chrome Initialized")
             print("Page Title is : %s" % self.driver.title)
-            element =self.driver.find_element_by_xpath(
+            element = self.driver.find_element_by_xpath(
                 "//input[@class='form-control ltr_override' and @name='loginfmt']")
             element.click()
             element.clear()
@@ -51,9 +51,9 @@ class Login():
             signinelement.click()
             print("Page Title is : %s" % self.driver.title)
             '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @id='idSIButton9']").click()'''
-            
-            
-            self.driver.find_element_by_xpath("//input[@name='passwd' and @type='password']").send_keys(password)
+
+            self.driver.find_element_by_xpath(
+                "//input[@name='passwd' and @type='password']").send_keys(password)
 
             wait = WebDriverWait(self.driver, 60)
             waiting = wait.until(EC.element_to_be_clickable(
@@ -62,12 +62,17 @@ class Login():
                 "//input[@class='btn btn-block btn-primary' and @type='submit']")
             submitelement.click()
             print("Page Title is : %s" % self.driver.title)
-            
+
             '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']").click()'''
             print("Page Title is : %s" % self.driver.title)
             self.driver.get("https://www.skype.com/en/")
             self.driver.implicitly_wait(60)
             print("Page Title is : %s" % self.driver.title)
+            userlogin = self.driver.find_element_by_xpath(
+                "//p[contains(@class, 'user-badge-email')]")
+            time.sleep(1)
+            print("User name is : %s" % userlogin.get_attribute('innerHTML'))
+
         except Exception as e:
 
             print(e)
@@ -79,5 +84,5 @@ class Login():
 
 if __name__ == "__main__":
 
-    login = Login()
+    login=Login()
     login.setup()
