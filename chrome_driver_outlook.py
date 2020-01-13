@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 import re
 import time
+import os
 import skype_credentials as credentials
 
 
@@ -77,8 +78,9 @@ class Login():
                 "//p[contains(@class, 'user-badge-email')]")
             time.sleep(1)
             print("User name is : %s" % userlogin.get_attribute('innerHTML'))
-            source_code=userlogin.get_attribute('outerHTML')
-            print("source code is: %s" %source_code)
+            source_code = userlogin.get_attribute('outerHTML')
+            print("source code is: %s" % source_code)
+            
 
         except Exception as e:
 
@@ -91,5 +93,5 @@ class Login():
 
 if __name__ == "__main__":
 
-    login=Login()
+    login = Login()
     login.setup()
