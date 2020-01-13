@@ -32,6 +32,7 @@ class Login():
             options.add_argument('--disable-dev-shm-usage')
             options.add_argument('--no-sandbox')
             options.add_argument('--ignore-certificate-errors')
+            screenshot_name = "screenshots/my_screenshot_name.png"
             self.driver = webdriver.Chrome(options=options)
             self.driver.get('https://login.live.com/login.srf')
             print("Headless Chrome Initialized")
@@ -55,6 +56,7 @@ class Login():
                 "//input[@name='passwd' and @type='password']").send_keys(password)
 
             wait = WebDriverWait(self.driver, 60)
+
             waiting = wait.until(EC.element_to_be_clickable(
                 (By.XPATH, "//input[@class='btn btn-block btn-primary' and @type='submit']")))
             submitelement = self.driver.find_element_by_xpath(
@@ -80,7 +82,7 @@ class Login():
             print("User name is : %s" % userlogin.get_attribute('innerHTML'))
             source_code = userlogin.get_attribute('outerHTML')
             print("source code is: %s" % source_code)
-            
+            self.driver.save_screenshot(screenshot_name)
 
         except Exception as e:
 
