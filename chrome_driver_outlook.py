@@ -82,6 +82,7 @@ class Login():
             print("User name is : %s" % userlogin.get_attribute('innerHTML'))
             source_code = userlogin.get_attribute('outerHTML')
             print("source code is: %s" % source_code)
+            self.driver.implicitly_wait(30)
             self.driver.save_screenshot(screenshot_name)
 
         except Exception as e:
