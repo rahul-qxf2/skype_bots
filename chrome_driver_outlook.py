@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 import requests
 import re
@@ -62,6 +64,21 @@ class Login():
             submitelement = self.driver.find_element_by_xpath(
                 "//input[@class='btn btn-block btn-primary' and @type='submit']")
             submitelement.click()
+            '''code for alert handling'''
+            for i in range(0, 5):
+                try:
+                    click_alert = self.driver.switch_to.alert()
+                    click_alert.dismiss()
+                    continue
+                except TimeoutException:
+                    print('wrong value in'+i+'th row . Please check the value ')
+                except NoAlertPresentException:
+                    print('i = ', i, 'alert is not present yet, waiting for some time')
+                    time.sleep(60)  # Delay for 1 minute (60 seconds)
+                except Exception as e:
+                    print("Unexpected error:", e)
+                    raise
+            ''' code for alert ends'''
             print("Page Title is : %s" % self.driver.title)
 
             '''self.driver.find_element_by_xpath("//input[@class='btn btn-block btn-primary' and @type='submit']").click()'''
