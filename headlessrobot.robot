@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    ImapLibrary
 
 *** Test Cases ***
 Chrome
@@ -21,6 +22,8 @@ Chrome
     Click Button                     xpath://input[@class='btn btn-block btn-primary' and @type='submit']
     Sleep                            30
     Capture Page Screenshot
+    Handle Alert                     DISMISS                                                                    60
+    Capture Page Screenshot
     Wait until Page Contains         Microsoft
     Sleep                            30
     Capture Page Screenshot
@@ -31,6 +34,7 @@ Chrome
     Wait until Page Contains         Skype 
     Sleep                            30                                                                         
     Capture Page Screenshot
+
 
 
 
